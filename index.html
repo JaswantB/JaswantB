@@ -1,13 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Sample Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaswant B | Game Developer Portfolio</title>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-color: #161b22;
+      --text-color: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+    header {
+      max-width: 900px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    nav {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    section {
+      background: var(--card-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 0.4rem;
+      font-size: 1.3rem;
+    }
+    ul { list-style: none; }
+    li { margin-bottom: 0.5rem; }
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 2rem 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>This is a simple paragraph demonstrating HTML structure.</p>
-    <p>You can add more content here, such as images, links, or lists.</p>
+  <header>
+    <h1>Jaswant B</h1>
+    <p>Game Developer | Unity & C# Programmer</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>Profile</h2>
+      <p>Aspiring Game Developer with hands-on experience in Unity (C#), building prototypes that explore physics-based mechanics, AI, and cross-platform deployment. Focused on optimization, player experience, and scalable systems.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Unity Engine</li>
+        <li>C# Programming</li>
+        <li>Object-Oriented Programming</li>
+        <li>Blender</li>
+        <li>Visual Studio</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><strong>ICAT Design and Media College</strong> — MSc Game Technology (2024–2026)</li>
+        <li><strong>MNM Jain Engineering College</strong> — BE Computer Science Engineering (2020–2024 | 86.5%)</li>
+        <li><strong>St. Bede’s Anglo Indian Hr Sec School</strong> — HSC (2019–2020 | 75%)</li>
+        <li><strong>St. Bede’s Anglo Indian Hr Sec School</strong> — SSLC (2017–2018 | 59%)</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <ul>
+        <li><strong>Phone:</strong> 7550175711</li>
+        <li><strong>Email:</strong> <a href="mailto:jasjaswant91@gmail.com">jasjaswant91@gmail.com</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/jaswantb">github.com/jaswantb</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/jaswant-b-105987220/">linkedin.com/in/jaswant-b-105987220/</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Jaswant B — Built with HTML & CSS
+  </footer>
 </body>
 </html>
