@@ -1,138 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jaswant B | Game Developer Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jaswant B | Game Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #0d1117;
-      --card-color: #161b22;
-      --text-color: #e6edf3;
-      --muted: #8b949e;
-      --accent: #58a6ff;
+      --bg: #0f0f1a;
+      --accent: #00ffca;
+      --text: #e0e0e0;
+      --card: #1a1a2e;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      padding: 0 1rem;
+    body { margin:0; background:var(--bg); color:var(--text); font-family:'Roboto',sans-serif; line-height:1.6; }
+    header { background:linear-gradient(135deg, #16213e, #0f0f1a); padding:4rem 2rem; text-align:center; }
+    h1 { font-family:'Orbitron',sans-serif; font-size:3.5rem; margin:0; color:var(--accent); text-shadow:0 0 20px rgba(0,255,202,0.5); }
+    h2 { font-family:'Orbitron',sans-serif; color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:10px; }
+    .container { max-width:1100px; margin:0 auto; padding:2rem; }
+    nav a { color:var(--text); margin:0 1rem; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:var(--accent); }
+    section { margin:4rem 0; }
+    .projects { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px,1fr)); gap:2rem; }
+    .project-card {
+      background:var(--card); border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.5);
+      transition:transform 0.3s;
     }
-    header {
-      max-width: 900px;
-      margin: 2rem auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    .project-card:hover { transform:translateY(-10px); }
+    .project-card img { width:100%; height:200px; object-fit:cover; }
+    .project-info { padding:1.5rem; }
+    .btn {
+      display:inline-block; background:var(--accent); color:#000; padding:0.7rem 1.5rem;
+      border-radius:50px; text-decoration:none; font-weight:bold; margin-top:1rem;
     }
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.3rem;
-    }
-    header p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-    nav {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    nav a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      border: 1px solid var(--accent);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-    }
-    section {
-      background: var(--card-color);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #30363d;
-      padding-bottom: 0.4rem;
-      font-size: 1.3rem;
-    }
-    ul { list-style: none; }
-    li { margin-bottom: 0.5rem; }
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin: 2rem 0;
-    }
+    .btn:hover { background:#00ccaa; }
+    footer { text-align:center; padding:3rem; background:#111; }
+    @media(max-width:768px){ h1{font-size:2.5rem;} }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Jaswant B</h1>
-    <p>Game Developer | Unity & C# Programmer</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="about">
-      <h2>Profile</h2>
-      <p>Aspiring Game Developer with hands-on experience in Unity (C#), building prototypes that explore physics-based mechanics, AI, and cross-platform deployment. Focused on optimization, player experience, and scalable systems.</p>
-    </section>
+<header>
+  <h1>JASWANT B</h1>
+  <p style="font-size:1.4rem; margin:1rem 0;">Game Developer | Unity & C#</p>
+  <nav>
+    <a href="mailto:jasjaswant91@gmail.com">Email</a> |
+    <a href="https://github.com/jaswantb" target="_blank">GitHub</a> |
+    <a href="https://linkedin.com/in/jaswant-b-105987220/" target="_blank">LinkedIn</a> |
+    <a href="tel:7550175711">+91 75501 75711</a>
+  </nav>
+</header>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>Unity Engine</li>
-        <li>C# Programming</li>
-        <li>Object-Oriented Programming</li>
-        <li>Blender</li>
-        <li>Visual Studio</li>
-      </ul>
-    </section>
+<div class="container">
 
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>ICAT Design and Media College</strong> — MSc Game Technology (2024–2026)</li>
-        <li><strong>MNM Jain Engineering College</strong> — BE Computer Science Engineering (2020–2024 | 86.5%)</li>
-        <li><strong>St. Bede’s Anglo Indian Hr Sec School</strong> — HSC (2019–2020 | 75%)</li>
-        <li><strong>St. Bede’s Anglo Indian Hr Sec School</strong> — SSLC (2017–2018 | 59%)</li>
-      </ul>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Aspiring Game Developer currently pursuing MSc Game Technology (2024–2026). 
+      Passionate about creating immersive gameplay experiences using Unity and C#. 
+      Strong focus on physics-based mechanics, AI (NavMesh), player movement, optimization, 
+      and polished UI/UX. Always learning and shipping prototypes.
+    </p>
+  </section>
 
-    <section id="contact" class="contact">
-      <h2>Contact</h2>
-      <ul>
-        <li><strong>Phone:</strong> 7550175711</li>
-        <li><strong>Email:</strong> <a href="mailto:jasjaswant91@gmail.com">jasjaswant91@gmail.com</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/jaswantb">github.com/jaswantb</a></li>
-        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/jaswant-b-105987220/">linkedin.com/in/jaswant-b-105987220/</a></li>
-      </ul>
-    </section>
-  </main>
+  <section id="skills">
+    <h2>Skills & Tools</h2>
+    <p>Unity • C# • Object-Oriented Programming • NavMesh AI • Physics • UI/UX • Blender (basics) • Git • Visual Studio</p>
+  </section>
 
-  <footer>
-    © 2025 Jaswant B — Built with HTML & CSS
-  </footer>
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="projects">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <img src="https://via.placeholder.com/600x400/16213e/00ffca?text=Endless+Runner+Screenshot" alt="Endless Runner">
+        <div class="project-info">
+          <h3>Endless 3D Runner</h3>
+          <p><strong>Solo Project – Unity 2022</strong></p>
+          <p>A fast-paced endless runner with procedural obstacle generation, smooth character controller, scoring system, high-score persistence, main menu, pause, and game-over screens.</p>
+          <p><strong>Key Contributions:</strong></p>
+          <ul>
+            <li>Complete player movement & camera follow system</li>
+            <li>Scoring, coin collection & UI</li>
+            <li>Menu system + scene management</li>
+            <li>Mobile-ready touch controls (prototype)</li>
+          </ul>
+          <a href="#" class="btn" target="_blank">Play on Itch.io (coming soon)</a>
+          <a href="https://github.com/jaswantb/Endless-Runner" class="btn" style="background:#333; margin-left:10px;" target="_blank">Source Code</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <img src="https://via.placeholder.com/600x400/16213e/00ffca?text=Wrath+of+the+Night+Screenshot" alt="Wrath of the Night">
+        <div class="project-info">
+          <h3>Wrath of the Night</h3>
+          <p><strong>Final Year Group Project (Programmer) – Unity 2023</strong></p>
+          <p>A third-person action-adventure prototype set in a dark fantasy world where the player fights nocturnal creatures.</p>
+          <p><strong>My Contributions:</strong></p>
+          <ul>
+            <li>Implemented NavMesh AI for enemy patrol & chase behavior</li>
+            <li>Player controller with smooth movement, sprint, and combat combos</li>
+            <li>Dynamic day-night cycle affecting enemy aggression</li>
+            <li>Optimized performance for low-end PCs</li>
+          </ul>
+          <a href="#" class="btn" target="_blank">Trailer / Build (coming soon)</a>
+          <a href="https://github.com/your-team-repo/WrathOfTheNight" class="btn" style="background:#333; margin-left:10px;" target="_blank">Team Repo</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p><strong>MSc Game Technology</strong> – ICAT Design & Media College (2024–2026)</p>
+    <p><strong>BE Computer Science Engineering</strong> – MNM Jain Engineering College (2020–2024 | 86.5%)</p>
+  </section>
+
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>I’m actively looking for Game Programmer internships and junior positions.<br>Let’s talk games!</p>
+    <p><a href="mailto:jasjaswant91@gmail.com" class="btn">Email Me</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2025 Jaswant B – Built with Unity passion and a lot of coffee</p>
+</footer>
+
 </body>
 </html>
