@@ -4,97 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jaswant B | Game Developer</title>
+  <meta name="description" content="Jaswant B - Aspiring Game Developer | Unity & C# | Building immersive prototypes and gameplay systems">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0d0d0d;
-      --card: #1a1a1a;
-      --text: #e0e0e0;
-      --accent: #00ffaa;
-      --gray: #bbbbbb;
+    :root{
+      --bg:#0d0d0d;--card:#1a1a1a;--text:#e0e0e0;--accent:#00ffaa;--gray:#bbbbbb;--lightgray:#888
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background:var(--bg);
-      color:var(--text);
-      font-family:'Inter', sans-serif;
-      line-height:1.7;
-      padding:2rem 1rem;
-    }
-    .container { max-width:1000px; margin:0 auto; }
-    header { text-align:center; padding:4rem 0 3rem; border-bottom:1px solid #222; }
-    h1 {
-      font-size:3.8rem; font-weight:700; letter-spacing:-1px; color:white;
-      margin-bottom:0.5rem;
-    }
-    .tagline { font-size:1.3rem; color:var(--accent); font-weight:500; margin-bottom:1.5rem; }
-    nav a {
-      color:var(--gray); text-decoration:none; margin:0 1rem; font-weight:500;
-      transition:color 0.3s;
-    }
-    nav a:hover { color:var(--accent); }
-    section { padding:4rem 0; }
-    h2 {
-      font-size:2rem; font-weight:600; color:white; margin-bottom:2rem;
-      position:relative; display:inline-block;
-    }
-    h2::after {
-      content:''; position:absolute; bottom:-10px; left:0; width:60px;
-      height:4px; background:var(--accent); border-radius:2px;
-    }
-    .about p {
-      font-size:1.2rem; max-width:700px; margin:0 auto; color:var(--gray);
-    }
-    .skills-grid {
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem; margin-top:3rem;
-    }
-    .skill-category h3 { color:var(--accent); margin-bottom:1rem; font-size:1.1rem; }
-    .skill-category ul { list-style:none; }
-    .skill-category li {
-      padding:0.5rem 0; position:relative; padding-left:1.8rem; color:var(--gray);
-    }
-    .skill-category li::before {
-      content:"▹"; color:var(--accent); position:absolute; left:0;
-    }
-    .projects {
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(360px,1fr)); gap:2.5rem;
-    }
-    .project {
-      background:var(--card); border-radius:12px; overflow:hidden;
-      transition:transform 0.3s, box-shadow 0.3s;
-    }
-    .project:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,255,170,0.1); }
-    .project img {
-      width:100%; height:220px; object-fit:cover; background:#000;
-    }
-    .project-info {
-      padding:1.8rem;
-    }
-    .project-info h3 {
-      font-size:1.5rem; margin-bottom:0.5rem; color:white;
-    }
-    .project-info p {
-      color:var(--gray); font-size:0.98rem; margin:0.8rem 0;
-    }
-    .tags {
-      margin:1rem 0; font-size:0.85rem; color:var(--accent);
-    }
-    .btn {
-      display:inline-block; background:transparent; color:var(--accent);
-      border:1px solid var(--accent); padding:0.6rem 1.4rem; border-radius:50px;
-      text-decoration:none; font-weight:500; margin-right:0.8rem; margin-top:0.5rem;
-      transition:all 0.3s;
-    }
-    .btn:hover {
-      background:var(--accent); color:#000;
-    }
-    footer {
-      text-align:center; padding:4rem 0; color:#555; font-size:0.9rem;
-      border-top:1px solid #222; margin-top:5rem;
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;padding:2rem 1rem}
+    .container{max-width:1000px;margin:0 auto}
+    header{text-align:center;padding:4rem 0 3rem;border-bottom:1px solid #222}
+    h1{font-size:3.8rem;font-weight:700;color:white;margin-bottom:0.5rem;letter-spacing:-1px}
+    .tagline{font-size:1.35rem;color:var(--accent);font-weight:500;margin-bottom:1.5rem}
+    nav a{color:var(--gray);text-decoration:none;margin:0 1rem;font-weight:500;transition:color .3s}
+    nav a:hover{color:var(--accent)}
+    section{padding:4rem 0}
+    h2{font-size:2rem;font-weight:600;color:white;margin-bottom:2rem;position:relative;display:inline-block}
+    h2::after{content:'';position:absolute;bottom:-10px;left:0;width:60px;height:4px;background:var(--accent);border-radius:2px}
+    .about p{font-size:1.2rem;max-width:700px;margin:0 auto;color:var(--gray);text-align:center}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
+    .skill-category h3{color:var(--accent);margin-bottom:1rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px}
+    .skill-category ul{list-style:none}
+    .skill-category li{padding:0.5rem 0;position:relative;padding-left:1.8rem;color:var(--gray)}
+    .skill-category li::before{content:"▹";color:var(--accent);position:absolute;left:0}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2rem}
+    .project{background:var(--card);border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .project:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,255,170,.1)}
+    .project img{width:100%;height:220px;object-fit:cover;background:#000}
+    .project-info{padding:1.8rem}
+    .project-info h3{font-size:1.5rem;margin-bottom:.5rem;color:white}
+    .project-info p{color:var(--gray);font-size:.98rem;margin:0.8rem 0}
+    .tags{margin:1rem 0;font-size:.85rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px}
+    .btn{display:inline-block;background:transparent;color:var(--accent);border:1px solid var(--accent);padding:.6rem 1.4rem;border-radius:50px;text-decoration:none;font-weight:500;margin-right:.8rem;margin-top:.5rem;transition:all .3s;font-size:0.95rem}
+    .btn:hover{background:var(--accent);color:#000}
+    .contact{text-align:center;paddingographical:5rem 0}
+    .contact p{color:var(--lightgray);margin-bottom:1.5rem}
+    footer{text-align:center;padding:4rem 0;color:#555;font-size:0.9rem;border-top:1px solid #222}
     @media(max-width:768px){
-      h1{font-size:2.8rem;}
-      .skills-grid{grid-template-columns:1fr;}
+      h1{font-size:2.8rem}
+      .tagline{font-size:1.2rem}
+      nav a{display:block;margin:0.8rem 0}
     }
   </style>
 </head>
@@ -115,17 +64,15 @@
   <section class="about">
     <h2>About</h2>
     <p>
-      Passionate game developer currently pursuing MSc Game Technology. 
-      I love turning ideas into playable experiences constantly learning, 
-      iterating, and shipping polished prototypes in Unity. 
-      Focused on clean code, smooth gameplay feel, and systems that scale.
+      Aspiring Game Developer with hands-on experience in Unity (C#), building prototypes that explore 
+      physics-based mechanics, AI, and cross-platform deployment. Actively developing projects through 
+      guided courses and self-learning, with a focus on optimization, player experience, and scalable systems.
     </p>
   </section>
 
   <section class="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
-
       <div class="skill-category">
         <h3>Core</h3>
         <ul>
@@ -136,28 +83,25 @@
           <li>Scene & Build Optimization</li>
         </ul>
       </div>
-
       <div class="skill-category">
-        <h3>Tools & Others</h3>
+        <h3>Tools & Tech</h3>
         <ul>
           <li>Visual Studio</li>
           <li>Git & GitHub</li>
-          <li>Blender (Modeling & Basics)</li>
+          <li>Blender (Modeling Basics)</li>
           <li>NavMesh AI</li>
           <li>UI / UX Implementation</li>
         </ul>
       </div>
-
     </div>
   </section>
 
   <section class="projects">
     <h2>Projects</h2>
-
     <div class="projects">
 
       <div class="project">
-        <img src="https://via.placeholder.com/600x400/0f0f1a/00ffaa?text=Endless+3D+Runner" alt="Endless 3D Runner">
+        <img src="https://via.placeholder.com/800x450/0d0d0d/00ffaa?text=Endless+3D+Runner" alt="Endless 3D Runner Gameplay">
         <div class="project-info">
           <h3>Endless 3D Runner</h3>
           <p>Solo Project • Unity 2022</p>
@@ -169,11 +113,11 @@
       </div>
 
       <div class="project">
-        <img src="https://via.placeholder.com/600x400/0f0f1a/00ffaa?text=Wrath+of+the+Night" alt="Wrath of the Night">
+        <img src="https://via.placeholder.com/800x450/0d0d0d/00ffaa?text=Wrath+of+the+Night" alt="Wrath of the Night Gameplay">
         <div class="project-info">
           <h3>Wrath of the Night</h3>
           <p>Final Year Group Project • Lead Programmer</p>
-          <p>Dark fantasy third-person action prototype with intelligent enemy AI, dynamic day-night cycle, and fluid combat + movement.</p>
+          <p>Dark fantasy third-person action prototype featuring intelligent enemy AI using NavMesh, dynamic day-night cycle, fluid combat combos, and smooth character movement.</p>
           <div class="tags">NavMesh AI • Character Controller • Combat System • Optimization</div>
           <a href="#" class="btn">Gameplay Trailer →</a>
           <a href="#" class="btn">Team Repository</a>
@@ -183,20 +127,16 @@
     </div>
   </section>
 
-  <section style="text-align:center;">
-    <p style="font-size:1.1rem; color:var(--gray);">
-      Actively looking for Game Programmer internships & junior roles.<br>
-      Always excited to work on meaningful gameplay experiences.
-    </p>
-    <p style="margin-top:2rem;">
-      <a href="mailto:jasjaswant91@gmail.com" class="btn" style="font-size:1.1rem; padding:0.8rem 2rem;">Get In Touch</a>
-    </p>
+  <section class="contact">
+    <p>Currently pursuing MSc Game Technology (2024–2026)<br>
+       Actively looking for Game Programmer internships and junior roles.</p>
+    <a href="mailto:jasjaswant91@gmail.com" class="btn" style="font-size:1.1rem;padding:0.9rem 2.2rem;">Get In Touch</a>
   </section>
 
 </div>
 
 <footer>
-  © 2025 Jaswant B • Built with passion in Unity & VS Code
+  © 2025 Jaswant B • Crafted with passion in Unity & VS Code
 </footer>
 
 </body>
