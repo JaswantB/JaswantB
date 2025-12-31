@@ -1,105 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jaswant B | Game Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0d0d0d;--card:#1a1a1a;--text:#e0e0e0;--accent:#00ffaa;--gray:#bbbbbb;}
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;overflow-x:hidden;position:relative}
-   
-    .parallax-bg{
-      position:fixed;top:0;left:0;width:100%;height:150%;z-index:-1;
-      background:linear-gradient(135deg,#0a0a0a,#000814,#0a0a0a);background-size:400% 400%;
-      animation:gradient 25s ease infinite;
-    }
-    @keyframes gradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-    .container{max-width:1100px;margin:0 auto;position:relative;z-index:1;padding:2rem 1rem}
-    header{text-align:center;padding:8rem 0 4rem;border-bottom:1px solid #222}
-    h1{font-size:4rem;font-weight:700;color:white;letter-spacing:-2px}
-    .tagline{font-size:1.4rem;color:var(--accent);font-weight:500;margin:1rem 0}
-    nav a{color:var(--gray);text-decoration:none;margin:0 1rem;font-weight:500;transition:.3s}
-    nav a:hover{color:var(--accent)}
-    section{padding:6rem 0}
-    h2{font-size:2.4rem;font-weight:600;color:white;margin-bottom:3rem;position:relative;display:inline-block}
-    h2::after{content:'';position:absolute;bottom:-15px;left:0;width:80px;height:5px;background:var(--accent);border-radius:3px}
-    .about p{font-size:1.2rem;max-width:750px;margin:0 auto;color:var(--gray);text-align:center;line-height:1.8}
-  
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem;margin-top:3rem}
-    .skill-category h3{color:var(--accent);margin-bottom:1rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px}
-    .skill-category ul{list-style:none;}
-    .skill-category li{
-      padding:0.6rem 0;position:relative;padding-left:2.8rem;color:var(--gray);
-      font-size:1rem;transition:all 0.3s;
-    }
-    .skill-category li:hover{color:var(--accent);transform:translateX(8px);}
-
-    /* THIS IS THE REAL CHECKMARK — 100% WORKING */
-    .skill-category li::before{
-      content: "✔";
-      color: var(--accent);
-      position: absolute;
-      left: 0;
-      font-size: 1.7rem;
-      font-weight: bold;
-      top: -0.2rem;
-      text-shadow: 0 0 20px rgba(0,255,170,0.9);
-      transition: all 0.4s ease;
-    }
-    .skill-category li:hover::before{
-      transform: scale(1.6) rotate(15deg);
-      text-shadow: 0 0 45px rgba(0,255,170,1);
-    }
-
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:3rem;margin-top:2rem}
-    .project{background:var(--card);border-radius:16px;overflow:hidden;transition:all .4s;box-shadow:0 10px 30px rgba(0,0,0,0.6);}
-    .project:hover{transform:translateY(-12px);box-shadow:0 25px 50px rgba(0,255,170,0.25);}
-    .project img{width:100%;height:260px;object-fit:cover;background:#000}
-    .project-info{padding:2rem;text-align:center}
-    .project-info h3{font-size:1.8rem;color:white;margin-bottom:0.5rem}
-    .tags{font-size:0.88rem;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin:1.2rem 0}
-
-    .project-buttons{
-      display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;
-    }
-    .btn{
-      background:transparent;color:var(--accent);border:2px solid var(--accent);
-      padding:0.8rem 2rem;border-radius:50px;font-weight:600;transition:all .3s;
-      text-decoration:none;display:inline-block;font-size:0.95rem;cursor:pointer;
-    }
-    .btn:hover{background:var(--accent);color:#000}
-
-    .contact{text-align:center;padding:8rem 0;}
-    .contact p{color:var(--gray);font-size:1.2rem;margin-bottom:1rem;}
-
-    #videoModal{display:none;position:fixed;z-index:9999;inset:0;background:rgba(0,0,0,0.98);
-      align-items:center;justify-content:center;opacity:0;transition:opacity 0.5s;}
-    #videoModal.show{opacity:1}
-    .modal-content{position:relative;max-width:1000px;width:90%;
-      transform:scale(0.9);animation:scaleIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.2) forwards;}
-    @keyframes scaleIn{to{transform:scale(1)}}
-    .close{position:absolute;top:-60px;right:0;color:var(--accent);font-size:4rem;cursor:pointer;
-      text-shadow:0 0 20px var(--accent);}
-    .close:hover{transform:scale(1.2)}
-    .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);width:90px;height:90px;
-      border-radius:50%;background:rgba(0,255,170,0.12);border:4px solid var(--accent);
-      cursor:pointer;box-shadow:0 0 50px rgba(0,255,170,0.6);backdrop-filter:blur(12px);
-      background-position:center;background-repeat:no-repeat;background-size:40px;transition:all .4s;}
-    .nav-arrow:hover{background:var(--accent);box-shadow:0 0 80px rgba(0,255,170,1);transform:translateY(-50%) scale(1.2);}
-    .nav-arrow.prev{left:-130px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='%2300ffaa' stroke-width='4'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/svg%3E");}
-    .nav-arrow.next{right:-130px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='%2300ffaa' stroke-width='4'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");}
-    #mediaContainer{border:6px solid var(--accent);border-radius:20px;overflow:hidden;
-      box-shadow:0 0 80px rgba(0,255,170,0.6);}
-    #memeVideo{width:100%;display:block;}
-    footer{text-align:center;padding:4rem 0;color:#666;border-top:1px solid #222;font-size:0.9rem}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #ffffff; color: #333333; font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    header { text-align: center; padding: 6rem 0 4rem; }
+    h1 { font-size: 3.5rem; font-weight: 700; color: #000000; margin-bottom: 0.5rem; }
+    .tagline { font-size: 1.4rem; color: #0066cc; font-weight: 500; margin-bottom: 1.5rem; }
+    nav { margin-top: 1rem; }
+    nav a { color: #0066cc; text-decoration: none; margin: 0 1rem; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 4rem 0; }
+    h2 { font-size: 2.2rem; font-weight: 600; color: #000000; margin-bottom: 2.5rem; text-align: center; }
+    .about p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 0; text-align: center; color: #444444; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+    .skill-category h3 { color: #0066cc; margin-bottom: 1rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .skill-category ul { list-style: none; }
+    .skill-category li { padding: 0.6rem 0; color: #444444; border-bottom: 1px solid #f0f0f0; }
+    .skill-category li:last-child { border-bottom: none; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin-top: 2rem; }
+    .project { padding: 2rem; background: #fafafa; border-left: 4px solid #0066cc; border-radius: 0 8px 8px 0; }
+    .project h3 { font-size: 1.7rem; margin-bottom: 0.5rem; color: #000000; }
+    .project p { color: #444444; font-size: 1rem; }
+    .contact { text-align: center; padding: 6rem 0; }
+    .contact p { font-size: 1.1rem; margin-bottom: 1rem; color: #444444; }
+    .btn { display: inline-block; background: #0066cc; color: #ffffff; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 1.5rem; transition: background 0.2s; }
+    .btn:hover { background: #004499; }
+    footer { text-align: center; padding: 3rem 0 2rem; color: #666666; font-size: 0.9rem; border-top: 1px solid #eeeeee; }
+    @media (max-width: 768px) { h1 { font-size: 2.8rem; } h2 { font-size: 1.9rem; } .container { padding: 1.5rem 1rem; } }
   </style>
 </head>
 <body>
-  <div class="parallax-bg"></div>
   <div class="container">
     <header>
       <h1>JASWANT B</h1>
@@ -113,7 +49,7 @@
 
     <section class="about">
       <h2>About</h2>
-      <p>Aspiring Game Developer skilled in Unity & C#. Building immersive prototypes with AI, physics, and optimized gameplay systems.</p>
+      <p>Aspiring Game Developer skilled in Unity & C#. Building immersive prototypes with AI, physics, and optimized gameplay systems. Pursuing MSc Game Technology (2024–2026).</p>
     </section>
 
     <section class="skills">
@@ -140,89 +76,30 @@
       </div>
     </section>
 
-    <section>
+    <section class="projects">
       <h2>Projects</h2>
       <div class="projects-grid">
         <div class="project">
-          <img src="https://via.placeholder.com/800x500/0d0d0d/00ffaa?text=Endless+3D+Runner" alt="Endless Runner">
-          <div class="project-info">
-            <h3>Endless 3D Runner</h3>
-            <p>Solo Project • Unity 2022</p>
-            <div class="tags">Procedural • Mobile • UI</div>
-            <div class="project-buttons">
-              <button class="btn" onclick="openVideo()">Watch Trailer</button>
-              <a href="https://jaswantb.itch.io/endless-runner" target="_blank" class="btn">View on itch.io</a>
-            </div>
-          </div>
+          <h3>Endless 3D Runner</h3>
+          <p>Solo Project • Unity 2022 • Procedural generation, mobile controls, endless gameplay.</p>
         </div>
-
         <div class="project">
-          <img src="https://via.placeholder.com/800x500/0d0d0d/00ffaa?text=Wrath+of+the+Night" alt="Wrath of the Night">
-          <div class="project-info">
-            <h3>Wrath of the Night</h3>
-            <p>Lead Programmer • Dark Fantasy</p>
-            <div class="tags">AI • Combat • Optimization</div>
-            <div class="project-buttons">
-              <button class="btn" onclick="openVideo()">Watch Trailer</button>
-              <a href="https://jaswantb.itch.io/wrath-of-the-night" target="_blank" class="btn">View on itch.io</a>
-            </div>
-          </div>
+          <h3>Poppix</h3>
+          <p>2D Mobile Game • Pixel art mechanics, touch input, addictive casual gameplay.</p>
+        </div>
+        <div class="project">
+          <h3>Wrath of the Night</h3>
+          <p>Lead Programmer • Dark Fantasy (In Progress - Final Year Project) • AI (NavMesh), combat systems, optimization.</p>
         </div>
       </div>
     </section>
 
     <section class="contact">
-      <p>Currently pursuing MSc Game Technology (2024–2026)</p>
+      <h2 style="margin-bottom: 1rem;">Get In Touch</h2>
       <p>Open to Game Programmer roles</p>
-      <a href="mailto:jasjaswant91@gmail.com?subject=Hey%20Jaswant%20-%20Game%20Programmer%20Opportunity&body=Hi%20Jaswant%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20chat%20about%20a%20Game%20Programmer%20role!%0D%0A%0D%0ABest%20regards%2C%0D%0A" 
-         class="btn" 
-         style="font-size:1.3rem;padding:1.2rem 3.5rem;margin-top:2.5rem;display:inline-block;">
-         Get In Touch
-      </a>
+      <a href="mailto:jasjaswant91@gmail.com?subject=Hey%20Jaswant%20-%20Game%20Programmer%20Opportunity&body=Hi%20Jaswant,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20chat%20about%20a%20Game%20Programmer%20role!%0A%0ABest,%0A" class="btn">Email Me</a>
     </section>
   </div>
-
-  <footer>© 2025 Jaswant B •</footer>
-
-  <div id="videoModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeVideo()">×</span>
-      <div class="nav-arrow prev" onclick="changeVideo()"></div>
-      <div class="nav-arrow next" onclick="changeVideo()"></div>
-      <div id="mediaContainer">
-        <video id="memeVideo" controls loop preload="auto">
-          <source src="" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById("videoModal");
-    const video = document.getElementById("memeVideo");
-
-    function openVideo() {
-      modal.style.display = "flex";
-      setTimeout(() => modal.classList.add("show"), 10);
-      video.play();
-    }
-    function closeVideo() {
-      modal.classList.remove("show");
-      setTimeout(() => modal.style.display = "none", 500);
-      video.pause(); video.currentTime = 0;
-    }
-    function changeVideo() { video.currentTime = 0; video.play(); }
-
-    document.addEventListener("keydown", e => {
-      if (modal.classList.contains("show")) {
-        if (e.key === "Escape") closeVideo();
-        if (e.key === "ArrowLeft" || e.key === "ArrowRight") changeVideo();
-      }
-    });
-    modal.addEventListener("click", e => { if (e.target === modal) closeVideo(); });
-    window.addEventListener('scroll', () => {
-      document.querySelector('.parallax-bg').style.transform = `translateY(${window.scrollY * 0.4}px)`;
-    });
-  </script>
+  <footer>© 2025 Jaswant B • Haryana, India</footer>
 </body>
 </html>
