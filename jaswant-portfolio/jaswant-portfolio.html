@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jaswant B — Game Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f2ee;--bg2:#ede9e3;--bg3:#e4dfd7;
+  --border:rgba(0,0,0,.09);--border2:rgba(0,0,0,.14);
+  --dim:#aaa49b;--muted:#7d786f;--body:#5a564f;--text:#1e1c18;--white:#fff;
+  --amber:#b8620a;--amber2:#d4732a;--amberBg:rgba(212,115,42,.08);
+  --green:#2d6a4f;--greenBg:rgba(45,106,79,.08);
+  --orange:#c45c00;--orangeBg:rgba(196,92,0,.08);
+  --sans:'Syne',sans-serif;--serif:'DM Serif Display',serif;--mono:'DM Mono',monospace;
+  --sidebar:260px;
+}
+html{height:100%;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-weight:400;line-height:1.65;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.layout{display:flex;min-height:100vh;}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar);min-height:100vh;position:fixed;top:0;left:0;bottom:0;border-right:1px solid var(--border2);display:flex;flex-direction:column;padding:3rem 2rem;z-index:100;background:var(--white);}
+.s-logo{font-family:var(--serif);font-size:1.55rem;color:var(--text);line-height:1.05;margin-bottom:.2rem;}
+.s-logo em{font-style:italic;color:var(--amber2);}
+.s-sub{font-family:var(--mono);font-size:.58rem;color:var(--dim);letter-spacing:.14em;text-transform:uppercase;margin-bottom:2.5rem;}
+.s-divider{height:1px;background:var(--border);margin:1.5rem 0;}
+.s-nav{list-style:none;display:flex;flex-direction:column;gap:.1rem;flex:1;}
+.s-nav a{display:flex;align-items:center;gap:.7rem;text-decoration:none;padding:.5rem .7rem;border-radius:6px;font-family:var(--mono);font-size:.65rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);transition:color .2s,background .2s;}
+.s-nav a .n-num{font-size:.54rem;color:var(--dim);min-width:1.1rem;}
+.s-nav a:hover,.s-nav a.active{color:var(--amber2);background:var(--amberBg);}
+.s-nav a.active .n-num{color:var(--amber);}
+.s-bottom{display:flex;flex-direction:column;gap:.9rem;}
+.s-status{display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.6rem;color:var(--muted);}
+.s-dot{width:7px;height:7px;border-radius:50%;background:#2d9e6b;animation:ping 2.5s ease infinite;box-shadow:0 0 0 0 rgba(45,158,107,.4);}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(45,158,107,.4);}70%{box-shadow:0 0 0 8px rgba(45,158,107,0);}100%{box-shadow:0 0 0 0 rgba(45,158,107,0);}}
+.s-hire{display:block;text-align:center;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:var(--text);padding:.65rem;border-radius:6px;text-decoration:none;transition:background .2s,transform .15s;}
+.s-hire:hover{background:var(--amber2);transform:translateY(-1px);}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar);flex:1;max-width:860px;}
+.sec{padding:6rem 5rem;border-bottom:1px solid var(--border);min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+
+/* ══════════════════════════════
+   HERO — full background image
+══════════════════════════════ */
+#hero.sec{
+  /* /* min-height:100vh;
+  justify-content:flex-end;
+  padding-bottom:5rem;
+  position:relative;
+  overflow:hidden;
+  /* ── BACKGROUND IMAGE ──
+     Replace the URL below with your own image.
+     Paste a direct image link, e.g.:
+       url('https://i.imgur.com/yourimage.jpg')
+     Or place a file next to the HTML and use:
+       url('hero-bg.jpg')
+  */
+  /* background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1400&q=80'); */
+  background-size:cover;
+  background-position:center; */
+  .hero-tag{font-family:var(--mono);font-size:.6rem;color:var(--amber);letter-spacing:.16em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.7rem;opacity:0;animation:rise .6s 1.3s ease forwards;}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--amber);}
+.hero-h{font-family:var(--serif);font-size:clamp(3.5rem,7vw,6.5rem);color:var(--text);line-height:.93;letter-spacing:-.02em;margin-bottom:2rem;}
+.hero-h .block{display:block;overflow:hidden;}
+.hero-h .inner{display:block;transform:translateY(106%);animation:riseB .85s cubic-bezier(.16,1,.3,1) forwards;}
+.hero-h .block:nth-child(1) .inner{animation-delay:1.4s;}
+.hero-h .block:nth-child(2) .inner{animation-delay:1.55s;color:var(--amber2);font-style:italic;}
+.hero-p{max-width:420px;font-size:.98rem;line-height:1.85;color:var(--muted);margin-bottom:2.5rem;opacity:0;animation:rise .6s 1.9s ease forwards;}
+.hero-p strong{color:var(--body);font-weight:600;}
+.hero-acts{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;opacity:0;animation:rise .6s 2.05s ease forwards;}
+.btn-fill{display:inline-flex;align-items:center;gap:.6rem;background:var(--text);color:var(--white);font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.8rem;border-radius:6px;font-weight:500;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-fill:hover{background:var(--amber2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,115,42,.2);}
+.btn-link{font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:.1rem;transition:color .2s,border-color .2s;}
+.btn-link:hover{color:var(--amber2);border-color:var(--amber2);}
+
+} */
+/* dark overlay so text stays readable */
+#hero.sec::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(20,18,14,.85) 0%,
+    rgba(20,18,14,.45) 50%,
+    rgba(20,18,14,.15) 100%
+  );
+  z-index:0;
+}
+/* push all hero content above the overlay */
+#hero.sec > *{position:relative;z-index:1;}
+
+.hero-tag{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.65);letter-spacing:.16em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.7rem;opacity:0;animation:rise .6s 1.3s ease forwards;}
+.hero-tag::before{content:'';width:24px;height:1px;background:rgba(255,255,255,.4);}
+.hero-h{font-family:var(--serif);font-size:clamp(3.5rem,7vw,6.5rem);color:#fff;line-height:.93;letter-spacing:-.02em;margin-bottom:2rem;}
+.hero-h .block{display:block;overflow:hidden;}
+.hero-h .inner{display:block;transform:translateY(106%);animation:riseB .85s cubic-bezier(.16,1,.3,1) forwards;}
+.hero-h .block:nth-child(1) .inner{animation-delay:1.4s;}
+.hero-h .block:nth-child(2) .inner{animation-delay:1.55s;color:var(--amber2);font-style:italic;}
+.hero-p{max-width:420px;font-size:.98rem;line-height:1.85;color:rgba(255,255,255,.7);margin-bottom:2.5rem;opacity:0;animation:rise .6s 1.9s ease forwards;}
+.hero-p strong{color:#fff;font-weight:600;}
+.hero-acts{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;opacity:0;animation:rise .6s 2.05s ease forwards;}
+.btn-fill{display:inline-flex;align-items:center;gap:.6rem;background:var(--amber2);color:var(--white);font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.8rem 1.8rem;border-radius:6px;font-weight:500;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-fill:hover{background:#fff;color:var(--text);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.2);}
+.btn-link{font-family:var(--mono);font-size:.63rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:.1rem;transition:color .2s,border-color .2s;}
+.btn-link:hover{color:#fff;border-color:rgba(255,255,255,.6);}
+
+/* ── SECTION HEADS ── */
+.sec-label{display:flex;align-items:center;gap:.8rem;margin-bottom:2.5rem;}
+.sec-num{font-family:var(--mono);font-size:.58rem;color:var(--amber);letter-spacing:.14em;}
+.sec-dash{flex:0 0 28px;height:1px;background:var(--border2);}
+.sec-h{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);color:var(--text);letter-spacing:-.02em;line-height:.95;margin-bottom:2.5rem;}
+.sec-h em{font-style:italic;color:var(--amber2);}
+
+/* ── ABOUT ── */
+.about-copy p{font-size:.97rem;line-height:1.9;color:var(--body);margin-bottom:1.2rem;}
+.about-copy p strong{color:var(--text);font-weight:600;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-top:2.5rem;}
+.stat-c{background:var(--white);padding:1.5rem 1.4rem;}
+.stat-n{font-family:var(--serif);font-size:2rem;color:var(--text);line-height:1;margin-bottom:.25rem;}
+.stat-n em{font-style:italic;color:var(--amber2);}
+.stat-l{font-family:var(--mono);font-size:.58rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;}
+.about-facts{margin-top:1.8rem;display:flex;flex-direction:column;}
+.af{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);}
+.af:first-child{border-top:1px solid var(--border);}
+.af-k{font-family:var(--mono);font-size:.59rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;}
+.af-v{font-family:var(--mono);font-size:.7rem;color:var(--text);}
+
+/* ── SKILLS ── */
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:8px;overflow:hidden;}
+.sk-c{background:var(--white);padding:1.8rem;transition:background .2s;}
+.sk-c:hover{background:var(--bg);}
+.sk-lbl{font-family:var(--mono);font-size:.58rem;color:var(--amber);letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.1rem;}
+.sk-wrap{display:flex;flex-wrap:wrap;gap:.4rem;}
+.sk-tag{font-family:var(--mono);font-size:.63rem;color:var(--body);background:var(--bg2);border:1px solid var(--border);padding:.28rem .65rem;border-radius:4px;transition:color .2s,background .2s;cursor:default;}
+.sk-c:hover .sk-tag{background:var(--bg3);}
+.sk-tag:hover{color:var(--amber2)!important;}
+
+/* ══════════════════════════════
+   PROJECTS — row + cover thumb
+══════════════════════════════ */
+.proj-list{display:flex;flex-direction:column;}
+.proj-row{
+  display:flex;align-items:center;
+  padding:1.8rem 0;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;gap:1.4rem;
+  transition:padding-left .22s ease;
+  position:relative;
+}
+.proj-row:first-child{border-top:1px solid var(--border);}
+.proj-row:hover{padding-left:.4rem;}
+.proj-row:hover .pr-title{color:var(--amber2);}
+.proj-row:hover .pr-arrow{transform:rotate(-45deg);color:var(--amber2);}
+.proj-row:hover .pr-thumb{box-shadow:0 6px 24px rgba(0,0,0,.15);}
+
+/* ── COVER THUMBNAIL BOX ── */
+.pr-thumb{
+  flex-shrink:0;
+  width:88px;height:66px;
+  border-radius:6px;
+  border:1px solid var(--border2);
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--bg2),var(--bg3));
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  transition:box-shadow .25s,transform .25s;
+}
+.proj-row:hover .pr-thumb{transform:scale(1.04);}
+/* grid pattern inside thumb */
+.pr-thumb::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,0,0,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.07) 1px,transparent 1px);
+  background-size:12px 12px;
+}
+/* if you drop an actual image inside .pr-thumb as <img>, it will show */
+.pr-thumb img{
+  width:100%;height:100%;
+  object-fit:cover;
+  position:relative;z-index:1;
+}
+/* fallback icon + label when no image */
+.pr-thumb-ph{
+  position:relative;z-index:1;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+}
+.pr-thumb-ph .ph-icon{font-size:1.5rem;line-height:1;}
+.pr-thumb-ph .ph-txt{
+  font-family:var(--mono);font-size:.45rem;
+  color:var(--muted);letter-spacing:.08em;text-transform:uppercase;
+  max-width:70px;text-align:center;line-height:1.3;
+}
+
+.pr-left{flex:1;min-width:0;}
+.pr-meta{font-family:var(--mono);font-size:.58rem;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;display:flex;align-items:center;gap:.6rem;}
+.pr-meta::before{content:'';width:14px;height:1px;background:var(--amber);}
+.pr-title{font-family:var(--serif);font-size:1.45rem;color:var(--text);letter-spacing:-.01em;margin-bottom:.4rem;transition:color .2s;}
+.pr-desc{font-size:.85rem;line-height:1.7;color:var(--muted);max-width:430px;}
+.pr-right{display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;flex-shrink:0;}
+.pr-badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .65rem;border-radius:100px;border:1px solid;white-space:nowrap;}
+.badge-done{color:var(--green);border-color:rgba(45,106,79,.25);background:var(--greenBg);}
+.badge-wip{color:var(--orange);border-color:rgba(196,92,0,.25);background:var(--orangeBg);display:flex;align-items:center;gap:.4rem;}
+.badge-wip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--orange);animation:pip 1.8s infinite;box-shadow:0 0 0 0 rgba(196,92,0,.5);}
+@keyframes pip{0%{box-shadow:0 0 0 0 rgba(196,92,0,.5);}70%{box-shadow:0 0 0 6px rgba(196,92,0,0);}100%{box-shadow:0 0 0 0 rgba(196,92,0,0);}}
+.pr-arrow{font-size:1rem;color:var(--dim);transition:transform .25s,color .2s;}
+.pr-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem;}
+.ptag{font-family:var(--mono);font-size:.56rem;color:var(--dim);border:1px solid var(--border);padding:.18rem .5rem;border-radius:3px;background:var(--bg2);}
+
+/* ── PANEL OVERLAY ── */
+.panel-overlay{position:fixed;inset:0;z-index:500;background:rgba(20,18,14,.3);opacity:0;pointer-events:none;transition:opacity .35s ease;backdrop-filter:blur(3px);}
+.panel-overlay.open{opacity:1;pointer-events:all;}
+
+/* ── PANEL ── */
+.panel{position:fixed;top:0;right:0;bottom:0;z-index:600;width:min(620px,100vw);background:var(--white);border-left:1px solid var(--border2);transform:translateX(100%);transition:transform .42s cubic-bezier(.16,1,.3,1);overflow-y:auto;display:flex;flex-direction:column;}
+.panel.open{transform:translateX(0);}
+.panel-topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.8rem;background:var(--white);border-bottom:1px solid var(--border);}
+.panel-topbar-title{font-family:var(--mono);font-size:.6rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;}
+.close-btn{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--border);padding:.42rem .85rem;border-radius:5px;cursor:pointer;transition:color .2s,border-color .2s,background .2s;}
+.close-btn:hover{color:var(--text);border-color:var(--border2);background:var(--bg);}
+.panel-hero-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.panel-hero-img::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:28px 28px;}
+.panel-hero-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.phi-inner{text-align:center;position:relative;z-index:1;}
+.phi-icon{font-size:3.5rem;display:block;margin-bottom:.6rem;}
+.phi-lbl{font-family:var(--mono);font-size:.68rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;}
+.panel-body{padding:2.2rem 2.2rem 3.5rem;}
+.panel-meta{font-family:var(--mono);font-size:.58rem;color:var(--amber);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.65rem;display:flex;align-items:center;gap:.6rem;}
+.panel-meta::before{content:'';width:18px;height:1px;background:var(--amber);}
+.panel-title{font-family:var(--serif);font-size:2rem;color:var(--text);letter-spacing:-.02em;line-height:1;margin-bottom:1rem;}
+.panel-badge-row{margin-bottom:1.5rem;}
+.panel-desc{font-size:.93rem;line-height:1.9;color:var(--body);margin-bottom:.5rem;}
+.panel-desc p{margin-bottom:.85rem;}
+.panel-desc p:last-child{margin-bottom:0;}
+.panel-sec-lbl{font-family:var(--mono);font-size:.58rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-top:1.8rem;margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+.panel-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.panel-tag{font-family:var(--mono);font-size:.62rem;color:var(--body);background:var(--bg2);border:1px solid var(--border);padding:.3rem .7rem;border-radius:4px;}
+.panel-gallery{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.2rem;}
+.gal-item{border-radius:6px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/10;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;position:relative;}
+.gal-item::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:18px 18px;}
+.gal-item img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;}
+.gal-lbl{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;position:relative;z-index:1;}
+.panel-cta{margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+.panel-cta a{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;padding:.7rem 1.5rem;border-radius:6px;transition:background .2s,transform .15s;}
+.pcta-primary{background:var(--text);color:var(--white);}
+.pcta-primary:hover{background:var(--amber2);transform:translateY(-1px);}
+.pcta-secondary{background:var(--bg2);color:var(--body);border:1px solid var(--border2);}
+.pcta-secondary:hover{background:var(--bg3);color:var(--text);}
+.pcta-disabled{opacity:.4;pointer-events:none;cursor:not-allowed;}
+
+/* ── CONTACT ── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-left p{font-size:.97rem;line-height:1.9;color:var(--body);margin-bottom:2rem;font-style:italic;}
+.contact-links{display:flex;flex-direction:column;}
+.clink{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);text-decoration:none;gap:1rem;transition:padding-left .2s;}
+.clink:first-child{border-top:1px solid var(--border);}
+.clink:hover{padding-left:.5rem;}
+.clink:hover .clink-name{color:var(--amber2);}
+.clink:hover .clink-arr{color:var(--amber2);transform:translate(2px,-2px);}
+.clink-name{font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--text);transition:color .2s;}
+.clink-handle{font-family:var(--mono);font-size:.58rem;color:var(--dim);margin-top:.1rem;}
+.clink-arr{color:var(--dim);transition:color .2s,transform .2s;font-size:.85rem;}
+
+footer{border-top:1px solid var(--border);padding:2rem 5rem;display:flex;justify-content:space-between;align-items:center;}
+footer p{font-family:var(--mono);font-size:.6rem;color:var(--dim);letter-spacing:.06em;}
+footer span{color:var(--amber2);}
+
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+@keyframes riseB{from{transform:translateY(106%);}to{transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.vis{opacity:1;transform:none;}
+
+@media(max-width:900px){:root{--sidebar:220px;}.sec{padding:5rem 3rem;}footer{padding:2rem 3rem;}}
+@media(max-width:700px){
+  .sidebar{position:relative;width:100%;min-height:auto;flex-direction:column;padding:1.5rem;gap:.8rem;border-right:none;border-bottom:1px solid var(--border2);}
+  .layout{flex-direction:column;}.main{margin-left:0;}
+  .s-nav{flex-direction:row;flex-wrap:wrap;gap:.4rem;}
+  .s-nav a{font-size:.57rem;padding:.38rem .55rem;}.s-nav a .n-num{display:none;}
+  .s-bottom{flex-direction:row;align-items:center;gap:.6rem;width:100%;}
+  .s-divider{display:none;}.s-sub,.s-status{display:none;}.s-hire{flex:0 0 auto;}
+  .sec{padding:4rem 1.5rem;min-height:auto;}
+  .about-stats{grid-template-columns:1fr 1fr;}
+  .sk-grid,.panel-gallery{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;gap:3rem;}
+  footer{padding:1.5rem;flex-direction:column;gap:.6rem;text-align:center;}
+  .panel{width:100vw;}
+  .pr-thumb{width:70px;height:52px;}
+}
+</style>
+</head>
+<body>
+
+<div class="panel-overlay" id="overlay"></div>
+<div class="panel" id="panel">
+  <div class="panel-topbar">
+    <span class="panel-topbar-title">Project Details</span>
+    <button class="close-btn" id="closePanel">✕ &nbsp;Close</button>
+  </div>
+  <div id="panelContent"></div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="s-logo">Jaswant<br><em>B.</em></div>
+      <div class="s-sub">Game Developer</div>
+      <ul class="s-nav">
+        <li><a href="#hero" class="active"><span class="n-num">00</span> Home</a></li>
+        <li><a href="#about"><span class="n-num">01</span> About</a></li>
+        <li><a href="#skills"><span class="n-num">02</span> Skills</a></li>
+        <li><a href="#projects"><span class="n-num">03</span> Projects</a></li>
+        <li><a href="#contact"><span class="n-num">04</span> Contact</a></li>
+      </ul>
+      <div class="s-divider"></div>
+    </div>
+    <div class="s-bottom">
+      <div class="s-status"><span class="s-dot"></span> Available now</div>
+      <a href="mailto:jaswantbaranidharan27@gmail.com?subject=Game%20Programmer%20Opportunity" class="s-hire">Hire Me</a>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- ══ HERO ══ -->
+    <section class="sec" id="hero">
+      <!--
+        TO CHANGE THE HERO BACKGROUND IMAGE:
+        In the CSS above, find  background-image: url('...')
+        and replace the URL with your own image link or file path.
+      -->
+      <div class="hero-tag">Unity · C# · MSc Game Technology</div>
+      <h1 class="hero-h">
+        <span class="block"><span class="inner">Game</span></span>
+        <span class="block"><span class="inner">Developer.</span></span>
+      </h1>
+      <p class="hero-p">Building <strong>gameplay systems, enemy AI,</strong> and mobile experiences in Unity. MSc Game Technology <strong>2024–2026</strong> — actively seeking my first studio role.</p>
+      <div class="hero-acts">
+        <a href="#projects" class="btn-fill">View Projects →</a>
+        <a href="mailto:jaswantbaranidharan27@gmail.com" class="btn-link">jaswantbaranidharan27@gmail.com</a>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section class="sec" id="about">
+      <div class="sec-label"><span class="sec-num">01</span><span class="sec-dash"></span></div>
+      <h2 class="sec-h">About <em>Me</em></h2>
+      <div class="about-copy reveal">
+        <p>I'm an aspiring game developer obsessed with <strong>how games feel</strong> — the precision of a jump arc, the tension in an enemy patrol, the satisfaction of a perfect combo.</p>
+        <p>My work spans <strong>solo mobile projects built from scratch</strong> to <strong>leading programming on a dark fantasy title</strong>. I write clean, performant C# and design systems that scale with a team.</p>
+        <p>Currently completing my <strong>MSc in Game Technology</strong> and actively seeking my first professional studio role. I'm ready to ship.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-c"><div class="stat-n">3<em>+</em></div><div class="stat-l">Projects Shipped</div></div>
+        <div class="stat-c"><div class="stat-n"><em>MSc</em></div><div class="stat-l">Game Technology</div></div>
+        <div class="stat-c"><div class="stat-n">2<em>y</em></div><div class="stat-l">Unity Experience</div></div>
+      </div>
+      <div class="about-facts reveal">
+        <div class="af"><span class="af-k">Status</span><span class="af-v" style="color:var(--green)">Open to Work</span></div>
+        <div class="af"><span class="af-k">Degree</span><span class="af-v">MSc Game Technology · 2024–2026</span></div>
+        <div class="af"><span class="af-k">Engine</span><span class="af-v">Unity</span></div>
+        <div class="af"><span class="af-k">Language</span><span class="af-v">C#</span></div>
+        <div class="af"><span class="af-k">Location</span><span class="af-v">Chennai, India</span></div>
+      </div>
+    </section>
+
+    <!-- ══ SKILLS ══ -->
+    <section class="sec" id="skills">
+      <div class="sec-label"><span class="sec-num">02</span><span class="sec-dash"></span></div>
+      <h2 class="sec-h">Tech <em>Stack</em></h2>
+      <div class="sk-grid reveal">
+        <div class="sk-c">
+          <div class="sk-lbl">Engine & Code</div>
+          <div class="sk-wrap">
+            <span class="sk-tag">Unity Engine</span><span class="sk-tag">C#</span><span class="sk-tag">OOP Architecture</span><span class="sk-tag">Gameplay Systems</span><span class="sk-tag">ScriptableObjects</span><span class="sk-tag">Coroutines</span>
+          </div>
+        </div>
+        <div class="sk-c">
+          <div class="sk-lbl">AI & Physics</div>
+          <div class="sk-wrap">
+            <span class="sk-tag">NavMesh AI</span><span class="sk-tag">Pathfinding</span><span class="sk-tag">State Machines</span><span class="sk-tag">Physics Systems</span><span class="sk-tag">Raycasting</span><span class="sk-tag">Combat Systems</span>
+          </div>
+        </div>
+        <div class="sk-c">
+          <div class="sk-lbl">Tools & Workflow</div>
+          <div class="sk-wrap">
+            <span class="sk-tag">Git & GitHub</span><span class="sk-tag">Visual Studio</span><span class="sk-tag">Blender</span><span class="sk-tag">Procedural Gen</span><span class="sk-tag">Scene Management</span>
+          </div>
+        </div>
+        <div class="sk-c">
+          <div class="sk-lbl">Platform & Output</div>
+          <div class="sk-wrap">
+            <span class="sk-tag">Mobile (Android)</span><span class="sk-tag">PC / Desktop</span><span class="sk-tag">Touch Input</span><span class="sk-tag">Performance Opt.</span><span class="sk-tag">UI / UX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROJECTS ══ -->
+    <section class="sec" id="projects">
+      <div class="sec-label"><span class="sec-num">03</span><span class="sec-dash"></span></div>
+      <h2 class="sec-h">Selected <em>Work</em></h2>
+      <p style="font-family:var(--mono);font-size:.62rem;color:var(--dim);letter-spacing:.08em;margin-bottom:2rem;display:flex;align-items:center;gap:.5rem;"><span style="font-size:.75rem;">↗</span> Click any project to explore</p>
+
+      <div class="proj-list">
+
+        <!-- PROJECT 1 -->
+        <div class="proj-row reveal" data-project="wrath">
+          <!--
+            COVER IMAGE for Wrath of the Night:
+            Replace the emoji placeholder below with:
+              <img src="your-screenshot.png" alt="Wrath of the Night">
+            Image should be placed in the same folder as this HTML file.
+          -->
+          <div class="pr-thumb">
+            <img src="./images/wrath-of-night/wrath-of-night.jpeg" alt="wrath-of-night" width="40" height="40">
+            <div class="pr-thumb-ph">
+              <!-- <span class="ph-icon">⚔️</span> -->
+              <!-- <span class="ph-txt">Wrath of the Night</span> -->
+            </div>
+          </div>
+          <div class="pr-left">
+            <div class="pr-meta">Lead Programmer · Dark Fantasy · Final Year</div>
+            <div class="pr-title">Wrath of the Night</div>
+            <p class="pr-desc">NavMesh enemy AI, melee combat with hit-stop feedback, optimised multi-scene environments.</p>
+            <div class="pr-tags"><span class="ptag">Unity 2022</span><span class="ptag">NavMesh AI</span><span class="ptag">Combat</span><span class="ptag">Dark Fantasy</span></div>
+          </div>
+          <div class="pr-right">
+            <span class="pr-badge badge-wip">In Dev</span>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="proj-row reveal" data-project="runner">
+         
+          <div class="pr-thumb">
+            <img src="./images/metro-escape/metro-escape.jpeg" alt="metro-escape" width="40" height="40">
+            <div class="pr-thumb-ph">
+              <!-- <span class="ph-icon">🏃</span> -->
+              <!-- <span class="ph-txt">Metro Escape</span> -->
+            </div>
+          </div>
+          <div class="pr-left">
+            <div class="pr-meta">Solo Developer · Mobile · Procedural</div>
+            <div class="pr-title">Metro Escape</div>
+            <p class="pr-desc">Infinite mobile runner — procedural tiles, difficulty scaling, mobile-first tuning, built entirely solo.</p>
+            <div class="pr-tags"><span class="ptag">Unity 2022</span><span class="ptag">Procedural Gen</span><span class="ptag">Android</span><span class="ptag">Solo</span></div>
+          </div>
+          <div class="pr-right">
+            <span class="pr-badge badge-done">Complete</span>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="proj-row reveal" data-project="poppix">
+          <!--
+            COVER IMAGE for Poppix:
+            Replace with: <img src="poppix.png" alt="Poppix">
+          -->
+          <div class="pr-thumb">
+            <img src="./images/popix/popix-cover.jpeg" alt="popix" width="40" height="40">
+            <div class="pr-thumb-ph">
+              <!-- <span class="ph-icon">🎮</span> -->
+              <!-- <span class="ph-txt">Poppix</span> -->
+            </div>
+          </div>
+          <div class="pr-left">
+            <div class="pr-meta">Developer · 2D Mobile · Casual</div>
+            <div class="pr-title">Poppix</div>
+            <p class="pr-desc">Casual 2D mobile title with pixel art visuals, tight touch feedback, and layered progression loops.</p>
+            <div class="pr-tags"><span class="ptag">2D</span><span class="ptag">Pixel Art</span><span class="ptag">Touch Input</span><span class="ptag">Casual</span></div>
+          </div>
+          <div class="pr-right">
+            <span class="pr-badge badge-done">Complete</span>
+            <span class="pr-arrow">↗</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section class="sec" id="contact">
+      <div class="sec-label"><span class="sec-num">04</span><span class="sec-dash"></span></div>
+      <h2 class="sec-h">Let's <em>Talk</em></h2>
+      <div class="contact-wrap">
+        <div class="contact-left reveal">
+          <p>Looking for Game Programmer roles, internships, and team projects. If your studio is building something — I want to hear about it.</p>
+          <a href="mailto:jaswantbaranidharan27@gmail.com?subject=Game%20Programmer%20Opportunity&body=Hi%20Jaswant,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20chat!%0A%0ABest," class="btn-fill">Send a Message →</a>
+        </div>
+        <div class="contact-links reveal">
+          <a href="mailto:jaswantbaranidharan27@gmail.com" class="clink">
+            <div><div class="clink-name">Email</div><div class="clink-handle">jaswantbaranidharan27@gmail.com</div></div>
+            <span class="clink-arr">↗</span>
+          </a>
+          <a href="https://github.com/jaswantb" target="_blank" class="clink">
+            <div><div class="clink-name">GitHub</div><div class="clink-handle">github.com/jaswantb</div></div>
+            <span class="clink-arr">↗</span>
+          </a>
+          <a href="https://linkedin.com/in/jaswant-b-105987220/" target="_blank" class="clink">
+            <div><div class="clink-name">LinkedIn</div><div class="clink-handle">linkedin.com/in/jaswant-b</div></div>
+            <span class="clink-arr">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 <span>Jaswant B</span> — Game Developer</p>
+      <p>Chennai, India</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+const projects = {
+  wrath: {
+    title:"Wrath of the Night", meta:"Lead Programmer · Dark Fantasy · Final Year Project",
+    icon:"⚔️", label:"Dark Fantasy Action",
+    badge:'<span class="pr-badge badge-wip" style="font-size:.6rem;border-radius:100px;">In Development</span>',
+    desc:`<p>A dark fantasy action game built as my final year project, where I took on the role of Lead Programmer — architecting the core systems from scratch.</p>
+          <p>Enemy AI uses Unity's NavMesh with layered state machines: enemies patrol, detect, pursue, attack, and retreat based on health thresholds. Melee combat features hit-stop feedback for satisfying impact, custom hitbox timing, and animation-driven state transitions.</p>
+          <p>Performance was a key challenge across complex multi-scene environments — async scene loading, object pooling for enemies and VFX, and LOD strategies brought frame times down significantly on mid-range hardware.</p>`,
+    tags:["Unity 2022","C#","NavMesh AI","State Machines","Melee Combat","Hit-Stop Feedback","Multi-Scene","Object Pooling","LOD Optimization","Dark Fantasy"],
+    screens:["images/wrath-of-night/wrath-of-night-one.jpeg", "images/wrath-of-night/wrath-of-night-two.jpeg", "images/wrath-of-night/wrath-of-night-three.jpeg", "images/wrath-of-night/wrath-of-night-four.jpeg"],
+    panelImage: 'images/wrath-of-night/wrath-of-night.jpeg',
+    live:false, github:"https://github.com/jaswantb"
+  },
+  runner: {
+    title:"Metro Escape", meta:"Solo Developer · Mobile · Procedural Generation",
+    icon:"🏃", label:"Infinite Mobile Runner",
+    badge:'<span class="pr-badge badge-done" style="font-size:.6rem;border-radius:100px;">Complete</span>',
+    desc:`<p>A complete mobile runner built entirely solo — zero purchased assets, every system hand-written in C#.</p>
+          <p>The core is a procedural tile generation system that spawns track sections ahead and despawns behind the player, keeping memory flat throughout a session. Difficulty scaling uses a curve-based system that ramps obstacle density and speed without feeling punishing.</p>
+          <p>Mobile-first design influenced everything: swipe input was tuned through playtest iteration, the UI is built for one-handed play, and the game targets locked 60fps on Android mid-range devices.</p>`,
+    tags:["Unity 2022","C#","Procedural Gen","Difficulty Curves","Touch Swipe Input","Android","Object Pooling","Mobile UI","Solo Development"],
+    screens:["images/metro-escape/Infinite-mobile-runner.jpeg", "images/metro-escape/game-play-view.jpeg", "images/metro-escape/procedural-titles.jpeg", "images/metro-escape/Mobile-UI.jpeg"],
+    panelImage: 'images/metro-escape/metro-escape.jpeg',
+    live:false, github:"https://github.com/jaswantb"
+  },
+  poppix: {
+    title:"Poppix", meta:"Developer · 2D Casual Mobile",
+    icon:"🎮", label:"2D Casual Mobile",
+    badge:'<span class="pr-badge badge-done" style="font-size:.6rem;border-radius:100px;">Complete</span>',
+    desc:`<p>A casual 2D mobile game with pixel art visuals, designed around maximising session retention and moment-to-moment satisfaction.</p>
+          <p>The core loop is fast and satisfying — tight touch feedback was the top priority, with input response tuned to feel instant. A layered progression system gives players short-term goals (level completions), medium-term goals (unlock new areas), and long-term goals (full completion).</p>
+          <p>The pixel art aesthetic was chosen for its readability on small screens and nostalgic appeal to casual audiences. Every animation frame communicates game state without relying on text.</p>`,
+    tags:["Unity 2022","C#","2D","Pixel Art","Touch Input","Casual","Progression Design","Android","Mobile UI"],
+    screens:["images/popix/popix-home.jpeg", "images/popix/popix-game-start.jpeg", "images/popix/popix-game-end.jpeg"],
+    panelImage: 'images/popix/popix-cover.jpeg',
+    live:false, github:"https://github.com/jaswantb"
+  }
+};
+
+const panel      = document.getElementById('panel');
+const overlay    = document.getElementById('overlay');
+const panelContent = document.getElementById('panelContent');
+const closeBtn   = document.getElementById('closePanel');
+
+function openPanel(key) {
+  const p = projects[key]; if (!p) return;
+
+  // hero image: use panelImage if set, else show emoji placeholder
+  const heroHtml = p.panelImage
+    ? `<div class="panel-hero-img"><img src="${p.panelImage}" alt="${p.title}"></div>`
+    : `<div class="panel-hero-img">
+         <div class="phi-inner">
+           <span class="phi-icon">${p.icon}</span>
+           <div class="phi-lbl">${p.label}</div>
+         </div>
+       </div>`;
+
+  const gallery = p.screens.map(s => `
+    <div class="gal-item">
+      <img src="${s}" alt="Screenshot">
+    </div>`).join('');
+
+  panelContent.innerHTML = `
+    ${heroHtml}
+    <div class="panel-body">
+      <div class="panel-meta">${p.meta}</div>
+      <div class="panel-title">${p.title}</div>
+      <div class="panel-badge-row">${p.badge}</div>
+      <div class="panel-desc">${p.desc}</div>
+      <div class="panel-sec-lbl">Tech Stack</div>
+      <div class="panel-tags">${p.tags.map(t=>`<span class="panel-tag">${t}</span>`).join('')}</div>
+      <div class="panel-sec-lbl">Screenshots</div>
+      <div class="panel-gallery">${gallery}</div>
+      <div class="panel-cta">
+        <a href="${p.github}" target="_blank" class="pcta-secondary">View on GitHub →</a>
+        <a class="${p.live ? 'pcta-primary' : 'pcta-primary pcta-disabled'}" ${p.live ? `href="${p.liveUrl}" target="_blank"` : ''}>
+          ${p.live ? 'Live Demo →' : 'Demo Coming Soon'}
+        </a>
+      </div>
+    </div>`;
+
+  panel.classList.add('open');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  panel.scrollTop = 0;
+}
+
+function closePanel() {
+  panel.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.proj-row').forEach(r => r.addEventListener('click', () => openPanel(r.dataset.project)));
+closeBtn.addEventListener('click', closePanel);
+overlay.addEventListener('click', closePanel);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+// Active nav
+const navLinks = document.querySelectorAll('.s-nav a');
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const a = document.querySelector(`.s-nav a[href="#${e.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { threshold: .35 });
+document.querySelectorAll('.sec').forEach(s => secObs.observe(s));
+
+// Reveal on scroll
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('vis'), 80); revObs.unobserve(e.target); } });
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+</script>
+</body>
+</html>
