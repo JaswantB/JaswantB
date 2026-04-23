@@ -32,7 +32,8 @@ I enjoy creating gameplay mechanics, experimenting with ideas, and turning conce
 ### 🎮 Metro Escape
 - Lane switching, jumping, sliding mechanics  
 - Smooth player controls and animations  
-- Built using Unity  
+- Built using Unity
+- https://github.com/JaswantB/Metro-Escape.git
 
 ### 🎮Wrath Of The Night
 - FPS Shooter
@@ -42,6 +43,7 @@ I enjoy creating gameplay mechanics, experimenting with ideas, and turning conce
 ### 🎮Poppix
 - 2D Hyper Casual Game
 - Minimal Tapping Mechanic
+- https://github.com/JaswantB/Poppix.git
 
 ---
 
